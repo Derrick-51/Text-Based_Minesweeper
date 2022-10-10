@@ -5,20 +5,20 @@ This is a simple minesweeper clone that adds powers to the game.
 Input consists of a string of characters that give commands.<br>
 Letters are not case sensitive, but must adhere to the proper format.<br>
 
-Ex. E 4C
+Ex. E 4C<br>
 This will expose the zone at row 4, column D (shown below).<br><br>
 
-       A   B   C   D   E   F   G   H <br>
-     --------------------------------<br><br>
- 
- 1|   [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]<br>
- 2|   [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]<br>
- 3|   [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]<br>
- 4|   [ ] [ ] [X] [ ] [ ] [ ] [ ] [ ]<br>
- 5|   [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]<br>
- 6|   [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]<br>
- 7|   [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]<br>
- 8|   [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]<br><br>
+              A   B   C   D   E   F   G   H 
+            --------------------------------
+       
+        1|   [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]
+        2|   [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]
+        3|   [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]
+        4|   [ ] [ ] [X] [ ] [ ] [ ] [ ] [ ]
+        5|   [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]
+        6|   [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]
+        7|   [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]
+        8|   [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]
  
  
  ## Powers

@@ -31,7 +31,8 @@ Field::Field(Difficulty diff)
 	initialSetup();
 }
 
-// Exclusively used with jamboree power
+// ** Exclusively used with jamboree power **
+// Randomly distributes mines to equal given mine count
 Field::Field(Difficulty diff, int exposedZones, int mines)
 	:m_difficulty{ diff }
 	, m_fieldSize{ fieldSizeInit(diff) }
@@ -72,6 +73,7 @@ void Field::initialSetup()
 	}
 }
 
+// Randomly distributes mines to equal current mine count
 void Field::jamboreeSetup()
 {
 	std::uniform_int_distribution rollZone{ 0, m_fieldSize - 1 };
@@ -121,7 +123,7 @@ void Field::placeMine(int row, int col)
 	invokeAtAdjacents(row, col, &Field::incrementZone);
 }
 
-// Scan and invoke function pointer at origin and adjacent zones
+// Scan and invoke function at origin and adjacent zones
 void Field::invokeAtAdjacents(int originRow, int originCol, memberFunc_t function)
 {
 
@@ -181,13 +183,14 @@ void Field::exposeZone(int row, int col)
 {
 	int index{ fieldIndex(row, col) };
 
-	// Stops recursion
+	// Terminates recursion for empty sections
 	if (m_zone[index].isExposed())
 		return;
 
 	m_zone[index].expose();
 	++m_exposedZones;
 
+	// Game lose condition
 	if (m_zone[index].hasMine())
 		m_mineExposed = true;
 	
@@ -197,11 +200,13 @@ void Field::exposeZone(int row, int col)
 		invokeAtAdjacents(row, col, &Field::exposeZone);
 }
 
+// Increments adjacent mine counter at given zone
 void Field::incrementZone(int row, int col)
 {
 	m_zone[fieldIndex(row, col)].increment();
 }
 
+// Decrements adjacent mine counter at given zone
 void Field::decrementZone(int row, int col)
 {
 	m_zone[fieldIndex(row, col)].decrement();
@@ -329,28 +334,30 @@ void Field::invokeVertical(int originRow, int originCol, memberFunc_t function)
 	}
 }
 
-// Blast horizontal line of 5 zones
+// Blast horizontal line of 5 zones, centered on selected zone
 void Field::horizontalBlast(int row, int col)
 {
 	invokeHorizontal(row, col, &Field::blastZone);
 }
 
+// Blast vertical line of 5 zones, centered on selected zone
 void Field::verticalBlast(int row, int col)
 {
 	invokeVertical(row, col, &Field::blastZone);
 }
 
+// Blast 3x3 square of zones, centered on selected zone
 void Field::radialBlast(int row, int col)
 {
 	invokeAtAdjacents(row, col, &Field::blastZone);
 }
 
-// Reconstruct and redistribute mines and exposes
+// Reconstruct grid and redistribute mines and exposes
 // Mines exposed int the process will instead be flagged
 void Field::jamboree(int row, int col)
 {
 	
-	row = 0; col = 0;	// Ignore arguments, parameters required in Field::usePower()
+	row = 0; col = 0;	// Ignore arguments, unused parameters required in Field::usePower()
 
 	*this = Field{ m_difficulty, m_exposedZones, m_fieldMines };
 
@@ -358,7 +365,7 @@ void Field::jamboree(int row, int col)
 
 	int zonesToExpose{ m_exposedZones };	// New value = random exposes + flags placed by jamboree
 
-	m_exposedZones = 0;		// Reset to recalculate since some will conver to flags
+	m_exposedZones = 0;		// Reset to recalculate since some will convert to flags
 
 	int randRow{};
 	int randCol{};
@@ -382,6 +389,9 @@ void Field::jamboree(int row, int col)
 void Field::usePower(int row, int col)
 {
 	constexpr int maxPowers{ 4 };
+
+	// All powers require row and column parameters,
+	// even if unused, to share identical type
 	using powerArr_t = void (Field::* const[maxPowers])(int, int);
 	
 	static powerArr_t powers

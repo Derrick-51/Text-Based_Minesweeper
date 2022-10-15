@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ConsoleBuffer.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="main.cpp" />
@@ -27,7 +26,6 @@
     <ClCompile Include="Zone.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ConsoleBuffer.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="GameLogic.h" />
     <ClInclude Include="RNG.h" />

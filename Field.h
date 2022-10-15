@@ -4,8 +4,6 @@
 #include "Zone.h"
 #include <vector>
 
-class Zone;
-
 class Field
 {
 public:

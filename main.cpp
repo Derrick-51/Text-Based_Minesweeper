@@ -1,7 +1,4 @@
-#include "field.h"
 #include "GameLogic.h"
-#include <iostream>
-#include <limits>
 
 /*
 	Text-Based Minesweeper

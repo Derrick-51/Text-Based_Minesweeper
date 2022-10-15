@@ -3,7 +3,7 @@
 #include <random>
 #include <iostream>
 #include <iomanip>
-#include <algorithm>
+#include <utility>
 
 // Length of square sides
 static constexpr int g_easyFieldSize{ 8 };

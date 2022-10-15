@@ -45,7 +45,7 @@ std::ostream& operator<< (std::ostream& out, const Zone& zone)
 			out << " # ";
 
 		// Never more than 8 adjacent mines
-		else if (zone.m_closeMines)
+		else if (zone.m_closeMines > 0)
 			out << ' ' << zone.m_closeMines << ' ';
 
 		else

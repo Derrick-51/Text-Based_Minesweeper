@@ -24,7 +24,6 @@ Field::Difficulty difficultyPrompt();
 bool validSelectionFormat(std::string_view input, std::string_view format);
 InputData playerActionSelect(const Field& field, std::string& inputStr);
 void performAction(Field& field, InputData input);
-bool keepPlaying();
 bool playGame();
 
 #endif

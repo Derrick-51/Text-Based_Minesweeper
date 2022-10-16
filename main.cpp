@@ -7,7 +7,7 @@
 	May be adapted to add GUI eventually.
 */
 
-
+bool keepPlaying();
 
 int main()
 {
@@ -26,3 +26,33 @@ int main()
 
 	return 0;
 } 
+
+bool keepPlaying()
+{
+	char input{};
+	while (true)
+	{
+		std::cout << "Would you like to play again? (y/n) ";
+		std::cin >> input;
+
+		if (std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cerr << "Invalid input, try again.\n\n";
+			continue;
+		}
+
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+		switch (input)
+		{
+		case 'y':
+		case 'Y':
+			return true;
+		case 'n':
+		case 'N':
+			return false;
+		}
+	}
+}

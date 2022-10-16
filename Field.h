@@ -52,8 +52,8 @@ private:
 	Difficulty m_difficulty{};
 	int m_fieldMines{ 0 };
 	int m_exposedZones{ 0 };
-	int m_fieldSize;			// Non-const to use jamboree power
-	int m_flatFieldSize;		// Non-const to use jamboree power
+	int m_fieldSize{};			// Non-const to use jamboree power
+	int m_flatFieldSize{};		// Non-const to use jamboree power
 	bool m_mineExposed{ false };
 
 	Field(Difficulty diff, int exposedZones, int mines);

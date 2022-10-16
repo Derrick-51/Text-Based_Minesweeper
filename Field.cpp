@@ -240,10 +240,14 @@ void print(const Field& field)
 	// Column headers
 	std::cout << "\n\n       ";
 	for (int col{}; col < field.m_fieldSize; ++col)
+	{
 		std::cout << static_cast<char>(col + asciiAlphaOffset) << "   ";
+	}
 	std::cout << "\n     ";
 	for (int col{}; col < field.m_fieldSize; ++col)
-		std::cout <<"----";
+	{
+		std::cout << "----";
+	}
 	std::cout << "\n\n";
 
 	for (int row{}; row < field.m_fieldSize; ++row)

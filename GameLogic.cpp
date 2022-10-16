@@ -42,7 +42,9 @@ Field::Difficulty difficultyPrompt()
 bool validSelectionFormat(std::string_view input, std::string_view format)
 {
 	if (input.length() != format.length())
+	{
 		return false;
+	}
 
 	static const std::map<char, int (*)(int)> validators
 	{

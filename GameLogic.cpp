@@ -1,6 +1,5 @@
-#include "RNG.h"
-#include "Field.h"
 #include "GameLogic.h"
+#include "Field.h"
 #include <iostream>
 #include <string>
 #include <limits>

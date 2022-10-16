@@ -8,6 +8,21 @@
 #include <algorithm>
 #include <map>
 
+
+enum class Action
+{
+	expose,
+	flag,
+	power
+};
+
+struct InputData
+{
+	Action action{};
+	int row{};
+	int col{};
+};
+
 // Returns difficulty
 Field::Difficulty difficultyPrompt()
 {

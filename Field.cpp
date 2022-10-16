@@ -82,6 +82,8 @@ void Field::jamboreeSetup()
 	int randRow{};
 	int randCol{};
 	int minesToPlant{ m_fieldMines };
+	m_fieldMines = 0;	// Reset mine count since it will be re-incremented
+
 	while (minesToPlant > 0)
 	{
 		randRow = rollZone(RNG::mt);

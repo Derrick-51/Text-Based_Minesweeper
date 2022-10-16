@@ -269,18 +269,20 @@ bool Field::isCleared() const
 // Exposes zone and removes mine
 void Field::blastZone(int row, int col)
 {
+	const int zoneIdx{ fieldIndex(row, col) };
+
 	// Blast removes mine
-	if (m_zone[fieldIndex(row, col)].hasMine())
+	if (m_zone[zoneIdx].hasMine())
 	{
 		invokeAtAdjacents(row, col, &Field::decrementZone);
 		--m_fieldMines;
 	}
 	
 	// Prevents win from blasting exposed zones repeatedly
-	if(!m_zone[fieldIndex(row, col)].isExposed())
+	if(!m_zone[zoneIdx].isExposed())
 		++m_exposedZones;
 
-	m_zone[fieldIndex(row, col)].blast();
+	m_zone[zoneIdx].blast();
 }
 
 void Field::invokeHorizontal(int originRow, int originCol, memberFunc_t function)

@@ -2,6 +2,7 @@
 #define GAMELOGIC_H
 
 #include "Field.h"
+
 #include <string>
 #include <string_view>
 

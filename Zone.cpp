@@ -1,4 +1,5 @@
 #include "Zone.h"
+
 #include "RNG.h"		// randPercent 1-100 int generator
 
 Zone::Zone(bool mine)

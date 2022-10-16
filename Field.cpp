@@ -1,5 +1,7 @@
 #include "Field.h"
+
 #include "RNG.h"
+
 #include <random>
 #include <iostream>
 #include <iomanip>

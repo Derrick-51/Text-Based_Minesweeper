@@ -279,10 +279,18 @@ void Field::blastZone(int row, int col)
 	}
 	
 	// Prevents win from blasting exposed zones repeatedly
-	if(!m_zone[zoneIdx].isExposed())
+	if (!m_zone[zoneIdx].isExposed())
+	{
 		++m_exposedZones;
+	}
 
 	m_zone[zoneIdx].blast();
+
+	// Scorched zones should not give any assistance
+	if (!m_zone[zoneIdx].isScorched() && (m_zone[zoneIdx].getMineCount() == 0))
+	{
+		invokeAtAdjacents(row, col, &Field::exposeZone);
+	}
 }
 
 void Field::invokeHorizontal(int originRow, int originCol, memberFunc_t function)
@@ -385,13 +393,6 @@ void Field::jamboree(int row, int col)
 		else
 		{
 			blastZone(randRow, randCol);
-
-			// Recursively expose empty sections that aren't scorched
-			if (!(m_zone[currentRandIdx].isScorched()) &&
-				(m_zone[currentRandIdx].getMineCount() == 0))
-			{
-				invokeAtAdjacents(randRow, randCol, &Field::exposeZone);
-			}
 		}
 
 		--zonesToExpose;

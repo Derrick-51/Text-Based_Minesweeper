@@ -367,11 +367,8 @@ void Field::radialBlast(int row, int col)
 
 // Reconstruct grid and redistribute mines and exposes
 // Mines exposed int the process will instead be flagged
-void Field::jamboree(int row, int col)
+void Field::jamboree([[maybe_unused]] int row, [[maybe_unused]] int col)
 {
-	
-	row = 0; col = 0;	// Ignore arguments, unused parameters required in Field::usePower()
-
 	*this = Field{ m_difficulty, m_exposedZones, m_fieldMines };
 
 	std::uniform_int_distribution rollZone{ 0, m_fieldSize - 1 };

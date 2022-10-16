@@ -67,7 +67,9 @@ void Field::initialSetup()
 		randCol = rollZone(RNG::mt);
 
 		if (m_zone[fieldIndex(randRow, randCol)].hasMine())
+		{
 			continue;
+		}
 
 		placeMine(randRow, randCol);
 		--mineCount;
@@ -90,7 +92,9 @@ void Field::jamboreeSetup()
 		randCol = rollZone(RNG::mt);
 
 		if (m_zone[fieldIndex(randRow, randCol)].hasMine())
+		{
 			continue;
+		}
 
 		placeMine(randRow, randCol);
 		--minesToPlant;
@@ -188,19 +192,24 @@ void Field::exposeZone(int row, int col)
 
 	// Terminates recursion for empty sections
 	if (m_zone[index].isExposed())
+	{
 		return;
+	}
 
 	m_zone[index].expose();
 	++m_exposedZones;
 
 	// Game lose condition
 	if (m_zone[index].hasMine())
+	{
 		m_mineExposed = true;
-	
+	}
 
 	// Recursively expose empty sections
 	if ((m_zone[index].getMineCount() == 0) && (!m_zone[index].hasMine()))
+	{
 		invokeAtAdjacents(row, col, &Field::exposeZone);
+	}
 }
 
 // Increments adjacent mine counter at given zone

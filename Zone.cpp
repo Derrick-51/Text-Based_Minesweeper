@@ -25,8 +25,10 @@ void Zone::blast()
 {
 	constexpr int scorchPercentChance{ 25 };
 
-	if(RNG::randPercent(RNG::mt) <= scorchPercentChance)
+	if (RNG::randPercent(RNG::mt) <= scorchPercentChance)
+	{
 		m_isScorched = true;
+	}
 	
 	expose();
 	removeMine();
@@ -41,24 +43,32 @@ std::ostream& operator<< (std::ostream& out, const Zone& zone)
 	if (zone.m_isExposed)
 	{
 		if (zone.m_hasMine)
+		{
 			out << "{X}";
-
+		}
 		else if (zone.m_isScorched)
+		{
 			out << " # ";
-
-		// Never more than 8 adjacent mines
-		else if (zone.m_closeMines > 0)
+		}
+		else if (zone.m_closeMines > 0)	// Never more than 8 adjacent mines
+		{
 			out << ' ' << zone.m_closeMines << ' ';
-
+		}
 		else
+		{
 			out << "   ";
+		}
 	}
 	else // Not exposed
 	{
 		if (zone.m_hasFlag)
-		out << "[&]";
+		{
+			out << "[&]";
+		}
 		else
-		out << "[ ]";
+		{
+			out << "[ ]";
+		}
 	}
 
 	return out;

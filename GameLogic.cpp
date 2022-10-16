@@ -91,7 +91,9 @@ InputData playerActionSelect(const Field& field, std::string& inputStr)
 
 		if (!validSelectionFormat(inputStr, "@_#@")
 			&& !validSelectionFormat(inputStr, "@_##@"))	// Example input: "E 2C" to expose zone 2C
+		{
 			continue;
+		}
 
 		// If final char (column letter) is uppercase set upper offset
 		adjustedOffset = std::isupper(inputStr[inputStr.length() - 1]) ?
@@ -219,7 +221,11 @@ bool playGame()
 	} while (!field.isCleared() && !field.mineExposed());
 
 	if (field.mineExposed())
+	{
 		return false;
+	}
 	else
+	{
 		return true;
+	}
 }

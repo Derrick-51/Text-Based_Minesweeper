@@ -374,14 +374,14 @@ void Field::jamboree(int row, int col)
 
 	std::uniform_int_distribution rollZone{ 0, m_fieldSize - 1 };
 
-	int zonesToExpose{ m_exposedZones };	// New value = random exposes + flags placed by jamboree
+	int zonesToTarget{ m_exposedZones };	// New value = random exposes + flags placed by jamboree
 
 	m_exposedZones = 0;		// Reset to recalculate since some will convert to flags
 
 	int randRow{};
 	int randCol{};
 	int currentRandIdx{};
-	while (zonesToExpose > 0)
+	while (zonesToTarget > 0)
 	{
 		randRow = rollZone(RNG::mt);
 		randCol = rollZone(RNG::mt);
@@ -395,7 +395,7 @@ void Field::jamboree(int row, int col)
 			blastZone(randRow, randCol);
 		}
 
-		--zonesToExpose;
+		--zonesToTarget;
 	}
 }
 

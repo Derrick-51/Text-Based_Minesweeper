@@ -8,8 +8,6 @@ class Zone
 public:
 	Zone(bool mine = false);
 
-	~Zone() = default;
-
 	void setMine();
 
 	void removeMine();

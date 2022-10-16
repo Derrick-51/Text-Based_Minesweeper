@@ -18,8 +18,6 @@ public:
 
 	Field(Difficulty difficulty = easy);
 
-	~Field() = default;
-
 	int fieldSizeInit(Difficulty diff);
 
 	void exposeFirstZone(int row, int col);

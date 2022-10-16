@@ -3,9 +3,12 @@
 
 #include <random>
 
-extern std::mt19937 mt;
-extern std::uniform_int_distribution<int> randPercent;
+namespace RNG
+{
+	extern std::mt19937 mt;
+	extern std::uniform_int_distribution<int> randPercent;
 
-int generateRandInt(int min, int max);
+	int generateRandInt(int min, int max);
+}
 
 #endif

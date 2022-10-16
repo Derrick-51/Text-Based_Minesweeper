@@ -25,7 +25,7 @@ void Zone::blast()
 {
 	constexpr int scorchPercentChance{ 25 };
 
-	if(randPercent(mt) <= scorchPercentChance)
+	if(RNG::randPercent(RNG::mt) <= scorchPercentChance)
 		m_isScorched = true;
 	
 	expose();

@@ -51,10 +51,10 @@ void Field::initialSetup()
 	int mineCount{};
 	switch (m_difficulty)
 	{
-	case easy:		mineCount = generateRandInt(g_easyMinMines, g_easyMaxMines);		break;
-	case medium:	mineCount = generateRandInt(g_mediumMinMines, g_mediumMaxMines);	break;
-	case hard:		mineCount = generateRandInt(g_hardMinMines, g_hardMaxMines);		break;
-	default:		mineCount = generateRandInt(g_hardMinMines, g_hardMaxMines);		break;
+	case easy:		mineCount = RNG::generateRandInt(g_easyMinMines, g_easyMaxMines);		break;
+	case medium:	mineCount = RNG::generateRandInt(g_mediumMinMines, g_mediumMaxMines);	break;
+	case hard:		mineCount = RNG::generateRandInt(g_hardMinMines, g_hardMaxMines);		break;
+	default:		mineCount = RNG::generateRandInt(g_hardMinMines, g_hardMaxMines);		break;
 	}
 
 	std::uniform_int_distribution rollZone{ 0, m_fieldSize - 1 };
@@ -63,8 +63,8 @@ void Field::initialSetup()
 	int randCol{};
 	while (mineCount > 0)
 	{
-		randRow = rollZone(mt);
-		randCol = rollZone(mt);
+		randRow = rollZone(RNG::mt);
+		randCol = rollZone(RNG::mt);
 
 		if (m_zone[fieldIndex(randRow, randCol)].hasMine())
 			continue;
@@ -84,8 +84,8 @@ void Field::jamboreeSetup()
 	int minesToPlant{ m_fieldMines };
 	while (minesToPlant > 0)
 	{
-		randRow = rollZone(mt);
-		randCol = rollZone(mt);
+		randRow = rollZone(RNG::mt);
+		randCol = rollZone(RNG::mt);
 
 		if (m_zone[fieldIndex(randRow, randCol)].hasMine())
 			continue;
@@ -171,7 +171,7 @@ void Field::exposeFirstZone(int row, int col)
 		int randElem{};
 		do
 		{
-			randElem = rollElem(mt);
+			randElem = rollElem(RNG::mt);
 		} while (m_zone[randElem].hasMine());	// Random zone
 
 		std::swap(m_zone[fieldIndex(row, col)], m_zone[randElem]);
@@ -373,8 +373,8 @@ void Field::jamboree(int row, int col)
 	int currentRandIdx{};
 	while (zonesToExpose > 0)
 	{
-		randRow = rollZone(mt);
-		randCol = rollZone(mt);
+		randRow = rollZone(RNG::mt);
+		randCol = rollZone(RNG::mt);
 		currentRandIdx = fieldIndex(randRow, randCol);
 		if (m_zone[currentRandIdx].hasMine())
 		{
@@ -414,5 +414,5 @@ void Field::usePower(int row, int col)
 
 	std::uniform_int_distribution randPower{ 0, maxPowers - 1 };
 
-	(this->*powers[randPower(mt)])(row, col);
+	(this->*powers[randPower(RNG::mt)])(row, col);
 }

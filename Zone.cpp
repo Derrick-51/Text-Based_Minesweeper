@@ -34,6 +34,8 @@ void Zone::blast()
 
 bool Zone::isExposed() const { return m_isExposed; }
 
+bool Zone::isScorched() const { return m_isScorched; }
+
 std::ostream& operator<< (std::ostream& out, const Zone& zone)
 {
 	if (zone.m_isExposed)

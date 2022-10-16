@@ -369,17 +369,26 @@ void Field::jamboree(int row, int col)
 
 	int randRow{};
 	int randCol{};
+	int currentRandIdx{};
 	while (zonesToExpose > 0)
 	{
 		randRow = rollZone(mt);
 		randCol = rollZone(mt);
-		if (m_zone[fieldIndex(randRow, randCol)].hasMine())
+		currentRandIdx = fieldIndex(randRow, randCol);
+		if (m_zone[currentRandIdx].hasMine())
 		{
 			flagZone(randRow, randCol);
 		}
 		else
 		{
 			blastZone(randRow, randCol);
+
+			// Recursively expose empty sections that aren't scorched
+			if (!(m_zone[currentRandIdx].isScorched()) &&
+				(m_zone[currentRandIdx].getMineCount() == 0))
+			{
+				invokeAtAdjacents(randRow, randCol, &Field::exposeZone);
+			}
 		}
 
 		--zonesToExpose;

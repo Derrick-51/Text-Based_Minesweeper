@@ -85,7 +85,7 @@ InputData playerActionSelect(const Field& field, std::string& inputStr)
 	while(true)
 	{
 		std::cout << "Actions:\n(E)xpose zone (F)lag zone (P)ower use\n\n"
-				  << "Select Action (Ex. f 2a): ";
+		          << "Select Action (Ex. f 2a): ";
 
 		std::getline(std::cin, inputStr);
 
@@ -97,7 +97,7 @@ InputData playerActionSelect(const Field& field, std::string& inputStr)
 
 		// If final char (column letter) is uppercase set upper offset
 		adjustedOffset = std::isupper(inputStr[inputStr.length() - 1]) ?
-							asciiUpAlphaOffset : asciiLowAlphaOffset;
+		                    asciiUpAlphaOffset : asciiLowAlphaOffset;
 
 		input.row = std::stoi(inputStr.substr(rowStrIdx)) - 1;	// Start at row index with conversion
 

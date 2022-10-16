@@ -145,15 +145,15 @@ void Field::invokeAtAdjacents(int originRow, int originCol, memberFunc_t functio
 	// functions that use single index
 	std::pair<int,int> adjZone[maxAdjZones]
 	{
-		std::pair{originRow - 1, originCol - 1},	// Northwest
-		std::pair{originRow - 1, originCol    },	// North
-		std::pair{originRow - 1, originCol + 1},	// Northeast
-		std::pair{originRow	   , originCol - 1},	// West
-		std::pair{originRow	   , originCol    },	// Origin
-		std::pair{originRow	   , originCol + 1},	// East
-		std::pair{originRow + 1, originCol - 1},	// Southwest
-		std::pair{originRow + 1, originCol    },	// South
-		std::pair{originRow + 1, originCol + 1},	// Southeast
+		std::pair{originRow - 1, originCol - 1},    // Northwest
+		std::pair{originRow - 1, originCol    },    // North
+		std::pair{originRow - 1, originCol + 1},    // Northeast
+		std::pair{originRow	   , originCol - 1},    // West
+		std::pair{originRow	   , originCol    },    // Origin
+		std::pair{originRow	   , originCol + 1},    // East
+		std::pair{originRow + 1, originCol - 1},    // Southwest
+		std::pair{originRow + 1, originCol    },    // South
+		std::pair{originRow + 1, originCol + 1},    // Southeast
 	};
 
 	for (auto scan : adjZone)
@@ -312,11 +312,11 @@ void Field::invokeHorizontal(int originRow, int originCol, memberFunc_t function
 	// functions that use single index
 	std::pair<int, int> adjZone[maxAdjZones]
 	{
-		std::pair{originRow, originCol - 2},	// West - 1
-		std::pair{originRow, originCol - 1},	// West
-		std::pair{originRow, originCol    },	// Origin
-		std::pair{originRow, originCol + 1},	// East
-		std::pair{originRow, originCol + 2},	// East + 1
+		std::pair{originRow, originCol - 2},    // West - 1
+		std::pair{originRow, originCol - 1},    // West
+		std::pair{originRow, originCol    },    // Origin
+		std::pair{originRow, originCol + 1},    // East
+		std::pair{originRow, originCol + 2},    // East + 1
 	};
 
 	for (auto scan : adjZone)
@@ -338,11 +338,11 @@ void Field::invokeVertical(int originRow, int originCol, memberFunc_t function)
 	// functions that use single index
 	std::pair<int, int> adjZone[maxAdjZones]
 	{
-		std::pair{originRow - 2, originCol},	// North - 1
-		std::pair{originRow - 1, originCol},	// North
-		std::pair{originRow	   , originCol},	// Origin
-		std::pair{originRow + 1, originCol},	// South
-		std::pair{originRow + 2, originCol},	// South + 1
+		std::pair{originRow - 2, originCol},    // North - 1
+		std::pair{originRow - 1, originCol},    // North
+		std::pair{originRow	   , originCol},    // Origin
+		std::pair{originRow + 1, originCol},    // South
+		std::pair{originRow + 2, originCol},    // South + 1
 	};
 
 	for (auto scan : adjZone)

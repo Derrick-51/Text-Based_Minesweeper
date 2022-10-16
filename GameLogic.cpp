@@ -69,10 +69,10 @@ bool validSelectionFormat(std::string_view input, std::string_view format)
 InputData playerActionSelect(const Field& field, std::string& inputStr)
 {
 	// To convert columns from char A-Z to int value (e.g. A = 0)
-	constexpr int asciiUpAlphaOffset{ 65 };
+	constexpr int asciiUpAlphaOffset{ 'A' };
 
 	// To convert columns from char a-z to int value (e.g. a = 0)
-	constexpr int asciiLowAlphaOffset{ 97 };
+	constexpr int asciiLowAlphaOffset{ 'a' };
 
 	// Holds upper/lower based on condition
 	int adjustedOffset{};

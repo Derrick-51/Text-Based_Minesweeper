@@ -4,6 +4,7 @@
 #include <iostream>
 #include <iomanip>
 #include <utility>
+#include <functional>
 
 // Length of square sides
 static constexpr int g_easyFieldSize{ 8 };
@@ -19,7 +20,7 @@ static constexpr int g_hardMinMines{ 30 };
 static constexpr int g_hardMaxMines{ 40 };
 
 // Used to distribute functions to multiple zones
-using memberFunc_t = void (Field::*)(int, int);
+using memberFunc_t = std::function<void(int,int)>;
 
 // Basic randomized constructor
 Field::Field(Difficulty diff)

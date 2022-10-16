@@ -6,7 +6,7 @@ Input consists of a string of characters that give commands.<br>
 Letters are not case sensitive, but must adhere to the proper format.<br>
 
 Ex. E 4C<br>
-This will expose the zone at row 4, column D (shown below).<br><br>
+This will expose the zone at row 4, column C (shown below).<br><br>
 
               A   B   C   D   E   F   G   H 
             --------------------------------
